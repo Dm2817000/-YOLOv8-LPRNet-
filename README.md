@@ -19,14 +19,19 @@
 ## 4. 模型训练
 ### 4.1 YOLOv8 训练
 编辑 train_yolo.py 中的 data="data-bvn.yaml"，确保 data-bvn.yaml 文件正确配置了你的 YOLOv8 格式的数据集路径（训练集、验证集和类别信息）。
+
 运行 YOLOv8 训练：
 python train_yolo.py
 
 ### 4.2 LPRNet 训练
 编辑 train_lpr_try620.py，确认 train_img_dirs, val_img_dirs, test_img_dirs 指向处理好的 CCPD2020 数据集的对应目录。
+
 注意： LPRNet 训练脚本中集成了日志记录、精度计算、学习率调度器（ReduceLROnPlateau）和早停机制，以优化训练过程和结果可视化。
+
 运行 LPRNet 训练：
+
 python train_lpr_try620.py
+
 
 ## 5. 使用 GUI 进行车牌识别
 
@@ -34,23 +39,36 @@ python train_lpr_try620.py
 
 打开 GUI 识别主程序文件（例如 `jicheng_sys.py`），更新以下配置参数为你的模型文件和中文字体文件的**绝对路径**：
 
-```python
-# YOLOv8 模型路径
+
+#### YOLOv8 模型路径
+
 YOLO_MODEL_PATH = r"E:\translation\autodl_results\yolo11n测车牌结果\weights\best.pt" # 替换为你的YOLOv8模型路径
-# LPRNet 模型路径
+
+#### LPRNet 模型路径
+
 LPRNET_MODEL_PATH = r"E:\translation\LPRNet_Pytorch-master\weights\Final_LPRNet_model.pth" # 替换为你的LPRNet模型路径
 
-# 用于在图像上绘制中文的字体路径 (非常重要!)
+
+#### 用于在图像上绘制中文的字体路径 (非常重要!)
+
 FONT_PATH = r"E:\translation\LPRNet_Pytorch-master\data\NotoSansCJK-Regular.ttc" # 替换为你的中文字体路径
-# 如果没有NotoSansCJK-Regular.ttc，在Windows上可以尝试
-# FONT_PATH = "C:\Windows\Fonts\simsun.ttc"
+
+#### 如果没有NotoSansCJK-Regular.ttc，在Windows上可以尝试
+
+FONT_PATH = "C:\Windows\Fonts\simsun.ttc"
+
 
 ### 5.2 GUI 界面操作
 标题: 界面顶部显示 "基于YOLOv8和LPRNet的车牌号识别系统"。
+
 上传图片: 点击界面中的 "上传图片" 按钮，选择一张包含车牌的图片文件。
+
 状态提示: 界面下方的状态栏会实时显示操作进度，例如“正在加载模型...”、“正在进行车牌检测和识别...”、“车牌识别完成！”等。
+
 进度条: 在识别过程中，进度条会动态更新，表示当前任务的完成比例。
+
 图片显示: 选择图片后，左侧区域会显示被处理的图片。如果检测到车牌，车牌位置会用绿色矩形框标注，并在框上方显眼地显示红色的车牌识别结果和YOLOv8置信度。
+
 识别结果: 右侧的“识别结果”区域会详细列出所有检测到的车牌的识别结果、YOLOv8检测置信度和精确的边界框坐标。
 
 # 6. 最终呈现效果
