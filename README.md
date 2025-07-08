@@ -29,17 +29,21 @@ python train_yolo.py
 python train_lpr_try620.py
 
 ## 5. 使用 GUI 进行车牌识别
+
 ### 5.1 配置模型路径和字体
-打开 GUI 识别主程序文件（例如 jicheng_sys.py），更新以下配置参数为你的模型文件和中文字体文件的绝对路径：
-YOLOv8 模型路径
+
+打开 GUI 识别主程序文件（例如 `jicheng_sys.py`），更新以下配置参数为你的模型文件和中文字体文件的**绝对路径**：
+
+```python
+# YOLOv8 模型路径
 YOLO_MODEL_PATH = r"E:\translation\autodl_results\yolo11n测车牌结果\weights\best.pt" # 替换为你的YOLOv8模型路径
-LPRNet 模型路径
+# LPRNet 模型路径
 LPRNET_MODEL_PATH = r"E:\translation\LPRNet_Pytorch-master\weights\Final_LPRNet_model.pth" # 替换为你的LPRNet模型路径
-用于在图像上绘制中文的字体路径 (非常重要!)
+
+# 用于在图像上绘制中文的字体路径 (非常重要!)
 FONT_PATH = r"E:\translation\LPRNet_Pytorch-master\data\NotoSansCJK-Regular.ttc" # 替换为你的中文字体路径
-如果没有NotoSansCJK-Regular.ttc，在Windows上可以尝试
-FONT_PATH = "C:\Windows\Fonts\simsun.ttc"
-重要提示: FONT_PATH 必须指向一个包含中文字符的字体文件 (.ttf 或 .ttc)，否则界面上显示中文车牌时可能出现乱码或方块。
+# 如果没有NotoSansCJK-Regular.ttc，在Windows上可以尝试
+# FONT_PATH = "C:\Windows\Fonts\simsun.ttc"
 
 ### 5.2 GUI 界面操作
 标题: 界面顶部显示 "基于YOLOv8和LPRNet的车牌号识别系统"。
